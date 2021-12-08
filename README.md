@@ -8,3 +8,4 @@
 ### ***Resources:***
 1.  Programmed in Javascript.
 2. Git version control.
+3. Coded in VS Code
