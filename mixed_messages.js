@@ -1,3 +1,4 @@
+const { Console } = require('console');
 const fs = require('fs');
 
 const allQuotes = fs.readFileSync('quotes.txt', 'utf-8')
@@ -31,12 +32,12 @@ const quotes = {
         let started = ''
         let ended = ''
         let personed = ''
-        console.log(str);
+        //console.log(str);
         for (let i = 0; i < this.cut.length; i++) {
             //console.log(str);
             if (str.includes(this.cut[i])) {
                 //console.log(this.cut[i]);
-                console.log(str.indexOf(this.cut[i]))
+                //console.log(str.indexOf(this.cut[i]))
                 cutIndex = str.indexOf(this.cut[i]) + this.cut[i].length;
                 started = str.slice(0, cutIndex);
                 //console.log(started)
@@ -100,44 +101,37 @@ const quotes = {
                 personNum = arr3.length - 1
             }
         }
-        console.log(startNum + ' ' + endNum + ' ' + personNum)
+        //console.log(startNum + ' ' + endNum + ' ' + personNum)
         this.variation1.push(arr1[startNum] + arr2[endNum] + arr3[personNum]);
         this.variation2.push(arr1[endNum] + arr2[personNum] + arr3[startNum]);
         this.variation3.push(arr1[personNum] + arr2[startNum] + arr3[endNum]);
         return arr1[startNum] + arr2[endNum] + arr3[personNum];
+    },
+    quoteCutter(num) {
+        let checkNum = num
+        if (num < 3) {
+            checkNum = 3;
+        } else if (num > this.whole.lenght) {
+            checkNum = this.whole.length;
+        }
+        for (let i = 0; i < checkNum; i++) {
+            console.log(i)
+            quotes.parseQuote(quotes.randQuote(quotes.whole))
+        }
     }
 
 }
 
-
-
-
-
-
 quotes.whole = quotes.parseWhole(allQuotes);
 quotes.cut = [' for ',  ' are ', ' by ', ' not ', ' who ',' and ', ' but ', ' or ', '! ', ' when ', ' one ', ' don’t ', ' ever ', ' must ', ' most ', ' is a ', ' than ', ' will '];
-//console.log(quotes.whole[2]);
-//let firstLength = quotes.whole.length - 3
-/*for (let i = 0; i < firstLength; i++) {
-    console.log(quotes.randQuote(quotes.whole))
-}*/
-//console.log("BREAK");
-//console.log(quotes.whole);
-quotes.parseQuote(quotes.randQuote(quotes.whole))
-quotes.parseQuote(quotes.randQuote(quotes.whole))
-quotes.parseQuote(quotes.randQuote(quotes.whole))
-//quotes.parseQuote(quotes.randQuote(quotes.whole))
-//quotes.parseQuote(quotes.randQuote(quotes.whole))
-//quotes.parseQuote(quotes.randQuote(quotes.whole))
-console.log(quotes.start);
-console.log(quotes.end);
-console.log(quotes.person);
-console.log(quotes.randParse(quotes.start, quotes.end, quotes.person))
+
+quotes.quoteCutter(8)
+quotes.randParse(quotes.start, quotes.end, quotes.person)
+console.log(quotes.variation1[0])
 console.log('...or...')
 console.log(quotes.variation2[0])
 console.log('...or maybe...')
 console.log(quotes.variation3[0])
-console.log(quotes.cut);
-quotes.cutOrder(3);
-console.log(quotes.cut);
+
+
 
