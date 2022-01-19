@@ -11,6 +11,18 @@ const quotes = {
     variation1: [],
     variation2: [],
     variation3: [],
+    cutOrder(randOrNum) {
+        let shifter = 0;
+        if (randOrNum === 'r' || randOrNum === 'random') {
+            shifter = Math.floor(Math.random() * this.cut.length)
+        } else {
+            shifter = randOrNum;
+        }
+        for (let i = 0; i < shifter; i++) {
+            console.log(i)
+            this.cut.push(this.cut.shift())
+        }
+    },
     parseWhole(str) {return str.split('\n')},
     parseQuote(str) { // .indexOf(cut)?
         let cutIndex = 0
@@ -121,6 +133,11 @@ console.log(quotes.start);
 console.log(quotes.end);
 console.log(quotes.person);
 console.log(quotes.randParse(quotes.start, quotes.end, quotes.person))
+console.log('...or...')
 console.log(quotes.variation2[0])
+console.log('...or maybe...')
 console.log(quotes.variation3[0])
+console.log(quotes.cut);
+quotes.cutOrder(3);
+console.log(quotes.cut);
 
