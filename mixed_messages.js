@@ -8,6 +8,9 @@ const quotes = {
     end: [],
     person: [],
     cut: [],
+    variation1: [],
+    variation2: [],
+    variation3: [],
     parseWhole(str) {return str.split('\n')},
     parseQuote(str) { // .indexOf(cut)?
         let cutIndex = 0
@@ -16,7 +19,7 @@ const quotes = {
         let started = ''
         let ended = ''
         let personed = ''
-        //console.log(str);
+        console.log(str);
         for (let i = 0; i < this.cut.length; i++) {
             //console.log(str);
             if (str.includes(this.cut[i])) {
@@ -28,7 +31,7 @@ const quotes = {
                 break;
             } else if (i === this.cut.length - 1) {
                 console.log(1111)
-                cutIndex = str.indexOf(' ', Math.floor(str.length / 2) - 10)
+                cutIndex = str.indexOf(' ', Math.floor(str.length / 2) - 10) + 1;
                 started = str.slice(0, cutIndex)
                 break; 
             }
@@ -86,6 +89,9 @@ const quotes = {
             }
         }
         console.log(startNum + ' ' + endNum + ' ' + personNum)
+        this.variation1.push(arr1[startNum] + arr2[endNum] + arr3[personNum]);
+        this.variation2.push(arr1[endNum] + arr2[personNum] + arr3[startNum]);
+        this.variation3.push(arr1[personNum] + arr2[startNum] + arr3[endNum]);
         return arr1[startNum] + arr2[endNum] + arr3[personNum];
     }
 
@@ -97,7 +103,7 @@ const quotes = {
 
 
 quotes.whole = quotes.parseWhole(allQuotes);
-quotes.cut = [' for ',  ' are ', ' by ', ' not ', ' who ',' and ', ' but ', ' or ', '!', ' when ', ' one ', ' don’t ', ' ever ', ' must ', ' most ', ' is a ', ' than ', ' will '];
+quotes.cut = [' for ',  ' are ', ' by ', ' not ', ' who ',' and ', ' but ', ' or ', '! ', ' when ', ' one ', ' don’t ', ' ever ', ' must ', ' most ', ' is a ', ' than ', ' will '];
 //console.log(quotes.whole[2]);
 //let firstLength = quotes.whole.length - 3
 /*for (let i = 0; i < firstLength; i++) {
@@ -115,4 +121,6 @@ console.log(quotes.start);
 console.log(quotes.end);
 console.log(quotes.person);
 console.log(quotes.randParse(quotes.start, quotes.end, quotes.person))
+console.log(quotes.variation2[0])
+console.log(quotes.variation3[0])
 
