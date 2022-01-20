@@ -125,7 +125,7 @@ const quotes = {
         }
 
         for (let i = 0; i < checkNum; i++) {
-            quotes.parseQuote(quotes.chooseQuote(quotes.whole, i));
+            quotes.parseQuote(quotes.chooseQuote(quotes.whole, 'r'));
         }
     }
 }
@@ -133,6 +133,8 @@ const quotes = {
 quotes.whole = quotes.parseWhole(allQuotes); //Breaks the large string into an an array of quotes.
 
 quotes.cut = [' for ',  ' are ', ' by ', ' not ', ' who ',' and ', ' but ', ' or ', '! ', ' when ', ' one ', ' don’t ', ' ever ', ' must ', ' most ', ' is a ', ' than ', ' will ']; //the keywords that are used to cut the quotes into two parts.
+
+quotes.cutOrder('r')
 
 quotes.quoteCutter(3); //The number of quotes to cut and choose from.
 
