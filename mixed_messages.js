@@ -58,10 +58,15 @@ const quotes = {
         this.end.push(ended);
         this.person.push(personed);
     },
-    randQuote(arr) {
-        //returns a single string quote sellected randomly from array
-        const randIndex = Math.floor(Math.random() * arr.length);
-        return arr.splice(randIndex, 1)[0]; //note: index [0] used to convert the single ellement array to a string.
+    chooseQuote(arr, randOrDex) {
+        //returns a single string quote sellected randomly from array or as chosen by index
+        quoteIndex = 0;
+        if (randOrDex === 'r' || randOrDex === 'random'){
+            quoteIndex = Math.floor(Math.random() * arr.length);
+        } else {
+           quoteIndex = randOrDex;
+        }
+        return arr.splice(quoteIndex, 1)[0]; //note: index [0] used to convert the single ellement array to a string.
     }, 
     randParse(arr1, arr2, arr3) {
         //Randomizes 3 original quotes to create 3 new quotes each quote containing a differnt part of the original.
@@ -120,17 +125,16 @@ const quotes = {
         }
 
         for (let i = 0; i < checkNum; i++) {
-            quotes.parseQuote(quotes.randQuote(quotes.whole));
+            quotes.parseQuote(quotes.chooseQuote(quotes.whole, i));
         }
     }
-
 }
 
 quotes.whole = quotes.parseWhole(allQuotes); //Breaks the large string into an an array of quotes.
 
 quotes.cut = [' for ',  ' are ', ' by ', ' not ', ' who ',' and ', ' but ', ' or ', '! ', ' when ', ' one ', ' don’t ', ' ever ', ' must ', ' most ', ' is a ', ' than ', ' will ']; //the keywords that are used to cut the quotes into two parts.
 
-quotes.quoteCutter(8); //The number of quotes to cut and choose from.
+quotes.quoteCutter(3); //The number of quotes to cut and choose from.
 
 quotes.randParse(quotes.start, quotes.end, quotes.person); //Creates new incorect quotes.
 
