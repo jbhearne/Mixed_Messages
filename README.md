@@ -1,5 +1,5 @@
-# Mixed Messages
-## Codecademy Portfolio Project
+# Confounding Quotes
+## Mixed Messages - Codecademy Portfolio Project
 Created as part of the Codecademy Full-Stack Career Path.
 ### ***Goals:***
 1. Import a text file with a list of famous quotes.

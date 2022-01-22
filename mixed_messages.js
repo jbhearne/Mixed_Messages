@@ -75,7 +75,8 @@ const quotes = {
         let startNum = Math.floor(Math.random() * arr1.length);
         let endNum = Math.floor(Math.random() * arr2.length);
         let personNum = Math.floor(Math.random() * arr3.length);
-
+        
+        //Conditionals ensure that that the different parts of the new quotes the are sellected from unique original quotes.
         if (startNum < (arr1.length - 1)) {
             if (startNum === endNum) {
                 endNum++;
