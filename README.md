@@ -13,5 +13,5 @@ Created as part of the Codecademy Full-Stack Career Path.
 4. Coded in VS Code
 
 ## Running the program
-This project was created to be run on the terminal using Node.js. Outputs three "confused" quotes to the terminal made from different parts of three randomly chosen real quotes.
+This project was created to be run on the terminal using Node.js. Outputs three "confused" quotes to the terminal made from different parts of three randomly chosen real quotes. If you read all three quotes you could piece together the three original quotes yourself.
 ![Screenshot](Screenshot.PNG)
